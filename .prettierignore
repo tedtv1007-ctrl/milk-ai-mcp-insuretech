@@ -1,0 +1,11 @@
+# Ignore artifacts
+dist
+coverage
+node_modules
+
+# Ignore config files
+*.json
+!/.prettierrc
+
+# Ignore logs
+*.log
