@@ -1,4 +1,4 @@
-# Milk AI MCP InsureTech Server (正體中文)
+# Milk AI MCP InsureTech Server
 
 本專案實作了一個專為保險科技 (InsureTech) 設計的模型情境協定 (Model Context Protocol, MCP) 伺服器，專注於安全的理賠處理和保單分析。
 
