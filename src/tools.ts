@@ -1,4 +1,4 @@
-import { maskPII } from "./security";
+import { maskPII } from './security';
 
 /**
  * 產險 MCP 工具集
@@ -14,15 +14,17 @@ interface PolicyAnalysisResult {
  * 分析保單條款 (Mock 實作)
  * @param terms 原始條款文字
  */
-export const analyzePolicyTerms = async (terms: string): Promise<PolicyAnalysisResult> => {
+export const analyzePolicyTerms = async (
+  terms: string
+): Promise<PolicyAnalysisResult> => {
   // 進行安全脫敏
-  const sanitizedTerms = maskPII(terms);
-  
+  maskPII(terms);
+
   // 模擬分析邏輯 (未來可對接 LLM)
   return {
-    riskPoints: ["涉及不保事項：故意行為", "高風險區域承保限制"],
+    riskPoints: ['涉及不保事項：故意行為', '高風險區域承保限制'],
     deductible: 2000,
-    coverageLimit: 1000000
+    coverageLimit: 1000000,
   };
 };
 
@@ -31,7 +33,10 @@ export const analyzePolicyTerms = async (terms: string): Promise<PolicyAnalysisR
  * @param lossAmount 損失金額
  * @param policy 包含限額與自負額的保單物件
  */
-export const calculateClaim = (lossAmount: number, policy: { limit: number; deductible: number }): number => {
+export const calculateClaim = (
+  lossAmount: number,
+  policy: { limit: number; deductible: number }
+): number => {
   if (lossAmount <= policy.deductible) return 0;
   const claimable = lossAmount - policy.deductible;
   return Math.min(claimable, policy.limit);

@@ -21,7 +21,9 @@ app.post('/api/process', (req: Request, res: Response) => {
   const { text } = req.body;
 
   if (typeof text !== 'string') {
-    return res.status(400).json({ error: 'Request body must contain a "text" property of type string.' });
+    return res.status(400).json({
+      error: 'Request body must contain a "text" property of type string.',
+    });
   }
 
   // Log the original action (in a real app, you might log more metadata)
@@ -31,7 +33,9 @@ app.post('/api/process', (req: Request, res: Response) => {
   const sanitizedText = maskPII(text);
 
   // Log the result
-  auditLog('process_request_finish', { sanitized_length: sanitizedText.length });
+  auditLog('process_request_finish', {
+    sanitized_length: sanitizedText.length,
+  });
 
   res.status(200).json({
     original: text,
