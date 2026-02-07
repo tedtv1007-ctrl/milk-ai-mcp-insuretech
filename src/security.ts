@@ -20,8 +20,13 @@ export const maskPII = (text: string): string => {
 };
 
 export const auditLog = (action: string, metadata: Record<string, unknown>) => {
-  console.log(
-    `[稽核日誌] ${new Date().toISOString()} - 動作: ${action}`,
-    metadata
-  );
+  const logEntry = {
+    timestamp: new Date().toISOString(),
+    level: 'INFO',
+    type: 'AUDIT',
+    action,
+    ...metadata,
+  };
+  // 使用 JSON.stringify 確保 log aggregator 可以解析
+  console.log(JSON.stringify(logEntry));
 };

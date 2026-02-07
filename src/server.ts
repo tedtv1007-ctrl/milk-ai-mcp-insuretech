@@ -8,6 +8,14 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 
 // Define a health check endpoint
+app.get('/health', (req: Request, res: Response) => {
+  res.status(200).json({
+    status: 'ok',
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString(),
+  });
+});
+
 app.get('/', (req: Request, res: Response) => {
   res.status(200).send('Milk AI MCP InsureTech Server is running.');
 });
