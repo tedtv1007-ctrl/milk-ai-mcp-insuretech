@@ -8,7 +8,7 @@
     "start": "node -r ./dist/instrumentation.js dist/server.js",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest run"
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
     "eslint-plugin-prettier": "^5.5.5",
     "prettier": "^3.8.1",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.54.0"
+    "typescript-eslint": "^8.54.0",
+    "vitest": "^4.0.18"
   }
 }
