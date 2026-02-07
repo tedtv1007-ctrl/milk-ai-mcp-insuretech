@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/server.js",
+    "start": "node -r ./dist/instrumentation.js dist/server.js",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write .",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,6 +22,10 @@
   },
   "homepage": "https://github.com/tedtv1007-ctrl/milk-ai-mcp-insuretech#readme",
   "dependencies": {
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/auto-instrumentations-node": "^0.69.0",
+    "@opentelemetry/instrumentation-oracledb": "^0.36.0",
+    "@opentelemetry/sdk-node": "^0.211.0",
     "express": "^5.2.1"
   },
   "devDependencies": {
