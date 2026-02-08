@@ -22,15 +22,17 @@
   },
   "homepage": "https://github.com/tedtv1007-ctrl/milk-ai-mcp-insuretech#readme",
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
     "@opentelemetry/api": "^1.9.0",
     "@opentelemetry/auto-instrumentations-node": "^0.69.0",
     "@opentelemetry/instrumentation-oracledb": "^0.36.0",
     "@opentelemetry/sdk-node": "^0.211.0",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "tesseract.js": "^7.0.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
-    "@types/node": "^25.2.1",
+    "@types/node": "^25.2.2",
     "@typescript-eslint/eslint-plugin": "^8.54.0",
     "@typescript-eslint/parser": "^8.54.0",
     "eslint": "^9.39.2",

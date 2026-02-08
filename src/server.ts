@@ -51,6 +51,26 @@ app.post('/api/process', (req: Request, res: Response) => {
   });
 });
 
+import { parseReceipt } from './ocr-service';
+
+// ... (在 app.listen 之前)
+
+/**
+ * OCR Endpoint
+ * POST /api/ocr
+ * Body: { "imagePath": "/path/to/image.jpg" } (Optional)
+ */
+app.post('/api/ocr', async (req: Request, res: Response) => {
+  try {
+    const { imagePath } = req.body;
+    // 呼叫 OCR 服務 (如果沒傳 imagePath，會回傳 Mock)
+    const result = await parseReceipt(imagePath);
+    res.status(200).json({ status: 'success', data: result });
+  } catch (error) {
+    res.status(500).json({ status: 'error', message: 'OCR failed' });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
