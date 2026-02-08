@@ -52,8 +52,24 @@ app.post('/api/process', (req: Request, res: Response) => {
 });
 
 import { parseReceipt } from './ocr-service';
+import { checkPolicyExclusions } from './tools';
 
 // ... (在 app.listen 之前)
+
+/**
+ * Exclusion Check Endpoint
+ * POST /api/check-exclusions
+ */
+app.post('/api/check-exclusions', async (req: Request, res: Response) => {
+  const { claimDescription, policyId } = req.body;
+
+  if (typeof claimDescription !== 'string') {
+    return res.status(400).json({ error: 'Missing claimDescription' });
+  }
+
+  const result = await checkPolicyExclusions(claimDescription, policyId || 'default');
+  res.status(200).json(result);
+});
 
 /**
  * OCR Endpoint

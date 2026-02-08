@@ -4,7 +4,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 // 建立 MCP Server 實例
-const mcp = new McpServer({
+export const mcp = new McpServer({
   name: 'Milk AI InsureTech MCP',
   version: '1.0.0',
 });
